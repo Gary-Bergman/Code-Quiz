@@ -1,0 +1,23 @@
+header .flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+main .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 5px solid black;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 5%;
+    text-align: center;
+
+}
+
+button {
+    padding: 20px;
+    margin: 10%;
+}
+
+

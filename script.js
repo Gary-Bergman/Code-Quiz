@@ -1,9 +1,16 @@
 // Global variables
 var btnEl = document.querySelector("#startBtn");
 var submitBtn = document.querySelector("#submitBtn");
-var btn1 = document.querySelector("btn1");
+var btn1 = document.querySelector("#btn1");
+var btn2 = document.querySelector("#btn2");
+var btn3 = document.querySelector("#btn3");
+var btn4 = document.querySelector("#btn4");
 var timer = 120;
+var correctAnswers = 0;
+var incorrectAnswers = 5 - correctAnswers
 
+
+// Be consistent w/ querySelector OR getElementById
 
 // Event listener so that when the button is clicked, it will start the timer and ...
 btnEl.addEventListener("click", function () {
@@ -47,7 +54,8 @@ function questionFunc() {
             choice2: "<script>",
             choice3: "<link>",
             choice4: "<body>",
-            answer: "<script>"
+            answer: "<script>",
+            userAnswer: ""
             //answer needs to match string
         },
         {
@@ -56,7 +64,8 @@ function questionFunc() {
             choice2: "<script name=...>",
             choice3: "<script src=...>",
             choice4: "<script style=...>",
-            answer: "<script src=...>"
+            answer: "<script src=...>",
+            userAnswer: ""
         },
         {
             questionText: "How do you create a function in JavaScript??",
@@ -64,7 +73,8 @@ function questionFunc() {
             choice2: "function = myFunction()",
             choice3: "Function = myFunction()",
             choice4: "function : myFunction()",
-            answer: "function = myFunction()"
+            answer: "function = myFunction()",
+            userAnswer: ""
         },
         {
             questionText: "How does a FOR loop start?",
@@ -72,7 +82,8 @@ function questionFunc() {
             choice2: "for (i > 0; i = 0)",
             choice3: "for (i = 0, i > 5, i++)",
             choice4: "for (i = 0; i > 5; i++)",
-            answer: "for (i = 0; i > 5; i++)"
+            answer: "for (i = 0; i > 5; i++)",
+            userAnswer: ""
         },
         {
             questionText: "How can you add a comment in a JavaScript?",
@@ -80,7 +91,8 @@ function questionFunc() {
             choice2: "<!-- This is a comment. -->",
             choice3: "<-- This is a comment. --!>",
             choice4: "-This is a comment.-",
-            answer: "// This is a comment."
+            answer: "// This is a comment.",
+            userAnswer: ""
         }
     ]
     if (questionIndex == 0) {
@@ -99,8 +111,43 @@ function questionFunc() {
         document.getElementById("btn3").textContent = question[questionIndex].choice3;
         document.getElementById("btn4").textContent = question[questionIndex].choice4;
         questionIndex++;
-    })
+    });
 
-    btn1
+    btn1.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice1;
+        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
+            correctAnswers++
+        }
+        console.log(correctAnswers)
+
+    });
+    btn2.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice2;
+        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
+            correctAnswers++;
+        }
+        console.log(correctAnswers)
+    });
+
+    btn3.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice3;
+        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
+            correctAnswers++;
+        }
+        console.log(correctAnswers)
+    });
+
+    btn4.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice4;
+        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
+            correctAnswers++;
+        }
+        console.log(correctAnswers)
+    });
+
+
+
 }
+
+//Need to make time drop for incorrect answers
 

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link type="text/css" rel="stylesheet" href="style.css">
@@ -12,7 +12,7 @@
     <header>
         <nav class="flex-container">
             <h4 id="score">View Highscore</h4>
-            <h4>Time: <span id="timer"></span></span></h4>
+            <h4>Time: <span id="timer">120</span></h4>
         </nav>
     </header>
 
@@ -21,29 +21,35 @@
             <section>
                 <h1 id="question" class="row">Coding Quiz Challenge</h1>
                 <div class="row">
-                    <p id="answer" class="show" >Try to answer the following code-related questions within the time limit. Keep in mind
+                    <p id="p1" class="show">Try to answer the following code-related questions within the time limit.
+                        Keep in mind
                         that incorrect answers will penalize your scoretime by ten seconds!</p>
                 </div>
-               
-                    <!-- make this section visible to start and hidden after  -->
-                    <!-- Make buttons here that are hidden until click and then change the text in the DOM after each answer          -->
-                    <!-- in js on click event set attribute class to hide or show -->
+            </section>
+
+            <section class="answerBtns">
+                <button id="btn1" class="hide">Text</button>
+                <button id="btn2" class="hide">Text</button>
+                <button id="btn3" class="hide">Text</button>
+                <button id="btn4" class="hide">Text</button>
             </section>
 
 
 
-            
-                <button id="startBtn">Start Quiz</button>
-                <!-- <div id="main"></div> -->
-           
-          
+
+            <button id="startBtn" class="show">Start Quiz</button>
+
+            <button id="submitBtn" class="hide">Submit</button>
+
+            <p id="p2" class="hide">If you select the wrong answer your time will decrease by 10 seconds!</p>
+
+
         </section>
 
-        ​
     </main>
 
-
     <script src="script.js"></script>
+
 </body>
 
 </html>

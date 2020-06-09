@@ -22,6 +22,9 @@ button {
     margin: 10%;
 }
 
+p {
+    font-size: 30px;
+}
 .hide {
     display: none;
 }
@@ -30,3 +33,7 @@ button {
 .show {
     display: block;
 }
+
+/* .answerBtns {
+    width: 75%;
+} */

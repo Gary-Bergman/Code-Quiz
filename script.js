@@ -1,36 +1,27 @@
-//timer
-var timeEl = document.querySelector("#timer");
-// var mainEl = document.getElementById("main");
+// Timer
 
-var secondsLeft = 120;
-
-startBtn.addEventListener("click", function () {
-    function setTime() {
-        var timerInterval = setInterval(function () {
-            secondsLeft--;
-            timeEl.textContent = secondsLeft;
-
-            if (secondsLeft === 0) {
-                clearInterval(timerInterval);
-                // sendMessage();
-            }
-
-        }, 1000);
+// Select the id "myBtn" and assign it to a variable
+var btnEl = document.querySelector("#startBtn");
+// Timer variable
+var timer = 120;
+var stopwatchTimer = 120;
+// Add an event listener so that when the button is clicked, it will start the timer
+btnEl.addEventListener("click", function () {
+    console.log("Button was clicked!!");
+    if (stopwatchTimer > 0) {
+        stopwatchTimer = setInterval(countdownTimer, 1000);
     }
+});
+function countdownTimer() {
+    timer--;
+    document.querySelector("#timer").textContent = timer;
+}
 
-    function sendMessage() {
-        timeEl.textContent = " ";
 
-        // var imgEl = document.createElement("img");
 
-        // imgEl.setAttribute("src", "images/image_1.jpg");
-        // mainEl.appendChild(imgEl);
 
-    }
 
-    setTime();
 
-})
 var newButton1 = document.createElement("button")
 
 newButton1.textContent = "<script>";
@@ -45,9 +36,32 @@ startBtn.addEventListener("click", function () {
 
 
 
-//radio buttons from w3 quiz
-{/* <div style="position:relative;width:100%;">
-        <div id="altcontainer">
-          <label class="radiocontainer" id="label1"> &lt;scripting&gt;<input type="radio" name="quiz" id="1" onclick="clickRadio(this)" value="1"><span class="checkmark"></span></label><label class="radiocontainer checkedlabel" id="label2"> &lt;script&gt;<input type="radio" name="quiz" id="2" onclick="clickRadio(this)" value="2"><span class="checkmark"></span></label><label class="radiocontainer" id="label3"> &lt;javascript&gt;<input type="radio" name="quiz" id="3" onclick="clickRadio(this)" value="3"><span class="checkmark"></span></label><label class="radiocontainer" id="label4"> &lt;js&gt;<input type="radio" name="quiz" id="4" onclick="clickRadio(this)" value="4"><span class="checkmark"></span></label>
-        </div>
-      </div> */}
+var questionIndex = 0;
+//put in onclick function
+//change function name
+function q() {
+    questionIndex++
+    //update display for text in buttons and question
+    // set text cont by id answer document.getElementById("Btn2").textContent = question[questionIndex].choice2
+}
+
+var question = [
+    {
+        questionText: "What is blah blah blah?",
+        choice1: "Ablah",
+        choice2: "Bsdflkjdsfj",
+        choice3: "C",
+        choice4: "D",
+        answer: "Ablah"
+        //answer needs to match string
+    },
+    {
+        questionText: "What is the other thing?",
+        choice1: "A",
+        choice2: "B",
+        choice3: "C",
+        choice4: "D",
+        answer: "D"
+    },
+
+];

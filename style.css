@@ -1,25 +1,54 @@
+/* center h1 and fit box to page */
+body {
+    background-image: url(Assets/Images/background-port.jpg);
+}
+
+
 header .flex-container {
     display: flex;
     justify-content: space-between;
     margin-right: 60px;
     margin-left: 40px;
 }
+header {
+    text-align: space-between;
+    padding-top: 0px;
+    color: hsl(206, 17%, 28%);
+  }
+
+nav {
+    width: 100%;
+    margin-bottom: 40px;
+    color: #446E9B;
+  }
 
 main .flex-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 5px solid black;
-    margin-left: 30%;
-    margin-right: 30%;
+    border: 7px solid #446E9B;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 0;
     padding: 5%;
     text-align: center;
-
+    background-color: white;
+    /* max-height: 400px;
+    object-fit: contain; */
 }
+
 
 button {
     padding: 20px;
-    margin: 10%;
+    margin: 2%;
+    font-size: 30px;
+    
+  
+}
+
+.answerBtns {
+    align-content: center;
+    text-align: center;
 }
 
 p {
@@ -33,6 +62,18 @@ p {
 .show {
     display: block;
 }
+
+footer {
+    margin-top: 20px;
+    padding-top: 200px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.footerIcons {
+    font-size: 40px;
+}
+
 
 /* .answerBtns {
     width: 75%;

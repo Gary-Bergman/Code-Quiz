@@ -6,18 +6,32 @@ var btn2 = document.querySelector("#btn2");
 var btn3 = document.querySelector("#btn3");
 var btn4 = document.querySelector("#btn4");
 var timer = 120;
+var questionIndex = 0;
 var correctAnswers = 0;
 var incorrectAnswers = 5 - correctAnswers
+var subCount = 0
+
+
 
 
 // Be consistent w/ querySelector OR getElementById
+// Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById
 
 // Event listener so that when the button is clicked, it will start the timer and ...
 btnEl.addEventListener("click", function () {
     setInterval(function () {
-        if (timer > 0) {
+        if (timer > 0 && subCount !== 5) {
             timer--;
             document.querySelector("#timer").textContent = timer;
+        } else {
+            document.getElementById("btn1").setAttribute("class", "hide");
+            document.getElementById("btn2").setAttribute("class", "hide");
+            document.getElementById("btn3").setAttribute("class", "hide");
+            document.getElementById("btn4").setAttribute("class", "hide");
+
+            document.getElementById("question").textContent = "Filler2"
+
+            document.getElementById("p2").textContent = "FIller"
         }
     }, 1000);
 
@@ -44,9 +58,9 @@ btnEl.addEventListener("click", function () {
 });
 
 
-var questionIndex = 0;
 // //put in onclick function
 function questionFunc() {
+    // array of objects containing key-value pairs for each question set
     var question = [
         {
             questionText: "Inside which HTML element do we put the JavaScript?",
@@ -56,7 +70,6 @@ function questionFunc() {
             choice4: "<body>",
             answer: "<script>",
             userAnswer: ""
-            //answer needs to match string
         },
         {
             questionText: "What is the corrct syntax for referring to an external script?",
@@ -95,6 +108,8 @@ function questionFunc() {
             userAnswer: ""
         }
     ]
+
+    // This will initialize the first set of questions
     if (questionIndex == 0) {
         document.getElementById("question").textContent = question[questionIndex].questionText;
         document.getElementById("btn1").textContent = question[questionIndex].choice1;
@@ -102,52 +117,52 @@ function questionFunc() {
         document.getElementById("btn3").textContent = question[questionIndex].choice3;
         document.getElementById("btn4").textContent = question[questionIndex].choice4;
     }
-    //update display for text in buttons and question
-    // set text content by id answer
+    // This will set the next question (and answers) on click of submit button
     submitBtn.addEventListener("click", function () {
-        document.getElementById("question").textContent = question[questionIndex].questionText;
-        document.getElementById("btn1").textContent = question[questionIndex].choice1;
-        document.getElementById("btn2").textContent = question[questionIndex].choice2;
-        document.getElementById("btn3").textContent = question[questionIndex].choice3;
-        document.getElementById("btn4").textContent = question[questionIndex].choice4;
-        questionIndex++;
+        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
+            correctAnswers++;
+        } else {
+            timer -= 20;
+        };
+        console.log(correctAnswers)
+
+
+        // This will increase the questionIndex and ////////////
+        if (questionIndex < (question.length - 1)) {
+            questionIndex++;
+            document.getElementById("question").textContent = question[questionIndex].questionText;
+            document.getElementById("btn1").textContent = question[questionIndex].choice1;
+            document.getElementById("btn2").textContent = question[questionIndex].choice2;
+            document.getElementById("btn3").textContent = question[questionIndex].choice3;
+            document.getElementById("btn4").textContent = question[questionIndex].choice4;
+        }
+        subCount++
     });
+
+
+    // If the userAnswer is correct for each button, the correctAnswers count will increase.
 
     btn1.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice1;
-        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
-            correctAnswers++
-        }
-        console.log(correctAnswers)
+
 
     });
     btn2.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice2;
-        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
-            correctAnswers++;
-        }
-        console.log(correctAnswers)
     });
 
     btn3.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice3;
-        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
-            correctAnswers++;
-        }
-        console.log(correctAnswers)
     });
 
     btn4.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice4;
-        if (question[questionIndex].userAnswer == question[questionIndex].answer) {
-            correctAnswers++;
-        }
-        console.log(correctAnswers)
     });
-
-
-
 }
 
-//Need to make time drop for incorrect answers
+// Need to make the user only select one answer per question and to highlight the selected answer
+
+//Need to create an end page that loads user score after timer runs out and/or after user goes through quiz and lets them enter initials to be save for highscores page
+
+//Need to make a new html page for Highscores that save to local file
 

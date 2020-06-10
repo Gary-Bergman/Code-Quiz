@@ -5,13 +5,17 @@ var btn1 = document.querySelector("#btn1");
 var btn2 = document.querySelector("#btn2");
 var btn3 = document.querySelector("#btn3");
 var btn4 = document.querySelector("#btn4");
+var btnInit = document.querySelector("#initialsBtn");
+var intialsElement = document.getElementById("initials");
 var timer = 120;
 var questionIndex = 0;
 var correctAnswers = 0;
-var incorrectAnswers = 5 - correctAnswers
-var subCount = 0
+var incorrectAnswers = 5 - correctAnswers;
+var subCount = 0;
 
 
+
+// Update readme with vanilla javaScript functionality and how I made things work. Used bootstrap for syling. Created pages from scratch. etc.
 
 
 // Be consistent w/ querySelector OR getElementById
@@ -24,16 +28,30 @@ btnEl.addEventListener("click", function () {
             timer--;
             document.querySelector("#timer").textContent = timer;
         } else {
+            document.querySelector("#timer").textContent = timer;
+
             document.getElementById("btn1").setAttribute("class", "hide");
             document.getElementById("btn2").setAttribute("class", "hide");
             document.getElementById("btn3").setAttribute("class", "hide");
             document.getElementById("btn4").setAttribute("class", "hide");
 
-            document.getElementById("question").textContent = "Filler2"
+            document.getElementById("question").textContent = "Great job!"
 
-            document.getElementById("p2").textContent = "FIller"
+            document.getElementById("p2").textContent = "Your final score is " + correctAnswers;
+
+            document.getElementById("p3").setAttribute("class", "show");
+
+            document.getElementById("p3").textContent = "Your final time is " + timer + " seconds";
+
+            document.getElementById("submitBtn").setAttribute("class", "hide");
+
+            document.getElementById("initialsForm").setAttribute("class", "show");
+
         }
+
     }, 1000);
+
+
 
     // When start button is clicked, my p1 should switch to hide
     document.getElementById("p1").setAttribute("class", "hide");
@@ -63,7 +81,7 @@ function questionFunc() {
     // array of objects containing key-value pairs for each question set
     var question = [
         {
-            questionText: "Inside which HTML element do we put the JavaScript?",
+            questionText: "Inside which HTML element do we link our JavaScript?",
             choice1: "<html>",
             choice2: "<script>",
             choice3: "<link>",
@@ -140,24 +158,28 @@ function questionFunc() {
     });
 
 
+
+
+
+
     // If the userAnswer is correct for each button, the correctAnswers count will increase.
 
-    btn1.addEventListener("click", function () {
-        question[questionIndex].userAnswer = question[questionIndex].choice1;
+    // btn1.addEventListener("click", function () {
+    //     question[questionIndex].userAnswer = question[questionIndex].choice1;
 
 
-    });
-    btn2.addEventListener("click", function () {
-        question[questionIndex].userAnswer = question[questionIndex].choice2;
-    });
+    // });
+    // btn2.addEventListener("click", function () {
+    //     question[questionIndex].userAnswer = question[questionIndex].choice2;
+    // });
 
-    btn3.addEventListener("click", function () {
-        question[questionIndex].userAnswer = question[questionIndex].choice3;
-    });
+    // btn3.addEventListener("click", function () {
+    //     question[questionIndex].userAnswer = question[questionIndex].choice3;
+    // });
 
-    btn4.addEventListener("click", function () {
-        question[questionIndex].userAnswer = question[questionIndex].choice4;
-    });
+    // btn4.addEventListener("click", function () {
+    //     question[questionIndex].userAnswer = question[questionIndex].choice4;
+    // });
 }
 
 // Need to make the user only select one answer per question and to highlight the selected answer
@@ -166,3 +188,24 @@ function questionFunc() {
 
 //Need to make a new html page for Highscores that save to local file
 
+
+
+function saveHighscore() {
+    var initials = intialsElement.value.trim();
+
+    var highScoresArray = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    var userScore = {
+        score: correctAnswers,
+        time: timer,
+        intials: initials
+    };
+    highScoresArray.push(userScore);
+    window.location.href = "highscore.html";
+}
+btnInit.addEventListener("click", function () {
+    saveHighscore();
+})
+
+btnInit.onclick = highscore.html;
+//need function to print highscores on page

@@ -1,8 +1,12 @@
 /* center h1 and fit box to page */
+/* Change the font */
 body {
     background-image: url(Assets/Images/background-port.jpg);
 }
 
+.hsText {
+    text-align: center;
+}
 
 header .flex-container {
     display: flex;
@@ -33,15 +37,15 @@ main .flex-container {
     padding: 5%;
     text-align: center;
     background-color: white;
-    /* max-height: 400px;
-    object-fit: contain; */
+    max-height: 550px;
+ 
 }
 
 
 button {
-    padding: 20px;
-    margin: 2%;
-    font-size: 30px;
+    padding: 10px;
+    margin: 1.5%;
+    font-size: 100%;
     
   
 }
@@ -52,7 +56,11 @@ button {
 }
 
 p {
-    font-size: 30px;
+    font-size: 100%;
+}
+
+#p3, #p2 {
+    font-weight: bold;
 }
 .hide {
     display: none;
@@ -65,7 +73,7 @@ p {
 
 footer {
     margin-top: 20px;
-    padding-top: 200px;
+    padding-top: 100px;
     padding-bottom: 0;
     margin-bottom: 0;
 }

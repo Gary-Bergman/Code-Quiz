@@ -17,7 +17,7 @@
     <header>
 
         <nav class="flex-container navbar navbar-expand-lg navbar-light bg-light mt-0 mx-0">
-            <h4 class="col myName justify-content-center text-primary" id="score">View Highscore</h4>
+            <a href="highscore.html"><h4 class="col myName justify-content-center text-primary" id="score">View Highscore</h4></a>
             <h4>Time: <span id="timer">120</span></h4>
         </nav>
     </header>
@@ -49,7 +49,16 @@
 
             <button id="submitBtn" class="hide">Submit</button>
 
-            <p id="p2" class="hide">If you select the wrong answer your time will decrease by 10 seconds!</p>
+            <p id="p2" class="hide">If you select the wrong answer your time will decrease by 20 seconds!</p>
+
+            <p id="p3" class="hide"></p>
+
+            <form id="initialsForm" class="hide">
+                <label for="initials">Enter your initials:</label>
+                <input type="text" required="required" id="initials" name="initials">
+                <button id="initialsBtn">Submit</button>
+            </form>
+           
 
 
         </section>

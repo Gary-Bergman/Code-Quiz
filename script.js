@@ -6,11 +6,10 @@ var btn2 = document.querySelector("#btn2");
 var btn3 = document.querySelector("#btn3");
 var btn4 = document.querySelector("#btn4");
 var btnInit = document.querySelector("#initialsBtn");
-var intialsElement = document.getElementById("initials");
 var timer = 120;
 var questionIndex = 0;
 var correctAnswers = 0;
-var incorrectAnswers = 5 - correctAnswers;
+// var incorrectAnswers = 5 - correctAnswers;
 var subCount = 0;
 
 
@@ -28,8 +27,6 @@ btnEl.addEventListener("click", function () {
             timer--;
             document.querySelector("#timer").textContent = timer;
         } else {
-            document.querySelector("#timer").textContent = timer;
-
             document.getElementById("btn1").setAttribute("class", "hide");
             document.getElementById("btn2").setAttribute("class", "hide");
             document.getElementById("btn3").setAttribute("class", "hide");
@@ -41,17 +38,13 @@ btnEl.addEventListener("click", function () {
 
             document.getElementById("p3").setAttribute("class", "show");
 
-            document.getElementById("p3").textContent = "Your final time is " + timer + " seconds";
+            document.getElementById("p3").textContent = "Your final time is " + timer;
 
             document.getElementById("submitBtn").setAttribute("class", "hide");
 
             document.getElementById("initialsForm").setAttribute("class", "show");
-
         }
-
     }, 1000);
-
-
 
     // When start button is clicked, my p1 should switch to hide
     document.getElementById("p1").setAttribute("class", "hide");
@@ -158,28 +151,24 @@ function questionFunc() {
     });
 
 
-
-
-
-
     // If the userAnswer is correct for each button, the correctAnswers count will increase.
 
-    // btn1.addEventListener("click", function () {
-    //     question[questionIndex].userAnswer = question[questionIndex].choice1;
+    btn1.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice1;
 
 
-    // });
-    // btn2.addEventListener("click", function () {
-    //     question[questionIndex].userAnswer = question[questionIndex].choice2;
-    // });
+    });
+    btn2.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice2;
+    });
 
-    // btn3.addEventListener("click", function () {
-    //     question[questionIndex].userAnswer = question[questionIndex].choice3;
-    // });
+    btn3.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice3;
+    });
 
-    // btn4.addEventListener("click", function () {
-    //     question[questionIndex].userAnswer = question[questionIndex].choice4;
-    // });
+    btn4.addEventListener("click", function () {
+        question[questionIndex].userAnswer = question[questionIndex].choice4;
+    });
 }
 
 // Need to make the user only select one answer per question and to highlight the selected answer
@@ -187,8 +176,6 @@ function questionFunc() {
 //Need to create an end page that loads user score after timer runs out and/or after user goes through quiz and lets them enter initials to be save for highscores page
 
 //Need to make a new html page for Highscores that save to local file
-
-
 
 function saveHighscore() {
     var initials = intialsElement.value.trim();

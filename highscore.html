@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Highscores</title>  
-      <!-- Linked bootstrap cdn for bootswatch and font-awesome as well a standard external sylesheet. -->
+    <title>Highscores</title>
+    <!-- Linked bootstrap cdn for bootswatch and font-awesome as well a standard external sylesheet. -->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/spacelab/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sIQOcNYer0kt7oTyFe/YrGzKMFP/qxsJbXTxq0/uiZQgpwXwEu41sVz2M61lWbai" crossorigin="anonymous">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
-
         <nav class="flex-container navbar navbar-expand-lg navbar-light bg-light mt-0 mx-0">
-            <a href="index.html"><h4 class="col myName justify-content-center text-primary" id="quiz">Back to Quiz</h4></a>
+            <a href="index.html">
+                <h4 class="col myName justify-content-center text-primary" id="quiz">Back to Quiz</h4>
+            </a>
         </nav>
     </header>
 
     <main>
         <h1 class="hsText">Check out these great scores!</h1>
-
-
+        <section>
+            <ul id="highscoresInfo"></ul>
+        </section>
+        <ul id="highscoresInfo"></ul>
     </main>
 
     <footer>
@@ -41,7 +46,8 @@
         </nav>
     </footer>
 
+    <script src="highscore.js"></script>
 
-   
 </body>
+
 </html>

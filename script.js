@@ -20,13 +20,14 @@ var subCount = 0;
 // Be consistent w/ querySelector OR getElementById
 // Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById
 
-// Event listener so that when the button is clicked, it will start the timer and ...
+// Event listener so that when the button is clicked, it will start the timer and the DOM will change some elements of the page to create the final page where the user can see the score, time, and enter initals to be stored.
 btnEl.addEventListener("click", function () {
     setInterval(function () {
         if (timer > 0 && subCount !== 5) {
             timer--;
             document.querySelector("#timer").textContent = timer;
         } else {
+            document.querySelector("#timer").textContent = timer;
             document.getElementById("btn1").setAttribute("class", "hide");
             document.getElementById("btn2").setAttribute("class", "hide");
             document.getElementById("btn3").setAttribute("class", "hide");
@@ -69,7 +70,6 @@ btnEl.addEventListener("click", function () {
 });
 
 
-// //put in onclick function
 function questionFunc() {
     // array of objects containing key-value pairs for each question set
     var question = [
@@ -128,17 +128,21 @@ function questionFunc() {
         document.getElementById("btn3").textContent = question[questionIndex].choice3;
         document.getElementById("btn4").textContent = question[questionIndex].choice4;
     }
+
+
+
     // This will set the next question (and answers) on click of submit button
     submitBtn.addEventListener("click", function () {
         if (question[questionIndex].userAnswer == question[questionIndex].answer) {
             correctAnswers++;
         } else {
-            timer -= 20;
+            if (timer >= 20)
+                timer -= 20;
         };
         console.log(correctAnswers)
 
 
-        // This will increase the questionIndex and ////////////
+        // This will increase the questionIndex and switch the text in the buttons to reflect the next question and answer set. This also track the subCount which is used in code above to confirm the click and make sure the user is on the right page.
         if (questionIndex < (question.length - 1)) {
             questionIndex++;
             document.getElementById("question").textContent = question[questionIndex].questionText;
@@ -151,11 +155,10 @@ function questionFunc() {
     });
 
 
-    // If the userAnswer is correct for each button, the correctAnswers count will increase.
+    //On click events for each button the user can choose to determine if the button they selected matched the correct answer for that questionIndex, and if not there time will drop from the onclick above
 
     btn1.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice1;
-
 
     });
     btn2.addEventListener("click", function () {
@@ -171,28 +174,52 @@ function questionFunc() {
     });
 }
 
-// Need to make the user only select one answer per question and to highlight the selected answer
 
-//Need to create an end page that loads user score after timer runs out and/or after user goes through quiz and lets them enter initials to be save for highscores page
-
-//Need to make a new html page for Highscores that save to local file
-
+// This will save the users initials at the end of the quiz along with the score and time to be implemented on the highscores page
 function saveHighscore() {
-    var initials = intialsElement.value.trim();
+    var initialsElement = document.getElementById("initials")
+    var initials = initialsElement.value.trim();
 
-    var highScoresArray = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    if (initials !== "") {
+        // Object of users score, time, and initials to be pushed to the array
+        var userScore = {
+            score: correctAnswers,
+            time: timer,
+            initials: initials
+        };
 
-    var userScore = {
-        score: correctAnswers,
-        time: timer,
-        intials: initials
-    };
-    highScoresArray.push(userScore);
-    window.location.href = "highscore.html";
+        // Creates an array for the highscores, if null it will be an empty array, else it will grab the userScore object and push it to the array
+        var highScoresArray = JSON.parse(window.localStorage.getItem("highscores")) || [];
+        highScoresArray.push(userScore);
+
+        //This sets the object
+        localStorage.setItem("highscores", JSON.stringify(highScoresArray));
+
+        // This brings the user to the highscore page after the submit there initials
+        window.location.href = "highscore.html";
+    }
+    // else {
+    //     // create message to user saying "You must enter your initials to proceed" OR FIX THE REQUIRED BUTTON ON THE FORM!
+
+
+    // create function to loop through indices of highScoresArray
+    // var value = localStorage.getItem("highscores");
+    // var scores = JSON.parse(value);
+
+    // loop through array and display
 }
-btnInit.addEventListener("click", function () {
+// See highscore.js for the code that loops through the highScoresArray and puts each user's score on the page (highscore.html)
+
+
+// At the end of the quiz, this will run the saveHighscores function above
+btnInit.addEventListener("click", function (e) {
+    e.preventDefault()
     saveHighscore();
 })
 
-btnInit.onclick = highscore.html;
+
+// btnInit.onclick = highscore.html;
 //need function to print highscores on page
+
+//set local after line 188
+// localStorage.setItem("highscores")

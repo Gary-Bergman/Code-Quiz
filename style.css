@@ -1,4 +1,4 @@
-/* center h1 and fit box to page */
+
 /* Change the font */
 body {
     background-image: url(Assets/Images/background-port.jpg);
@@ -69,6 +69,13 @@ p {
 
 .show {
     display: block;
+}
+
+ul li {
+    text-align: center;
+    list-style-position: center;
+    font-size: 30px;
+    list-style-type: none;
 }
 
 footer {

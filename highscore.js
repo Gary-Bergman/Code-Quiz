@@ -1,12 +1,4 @@
 
-
-// create function to loop through indices of highScoresArray
-//     var userScore = {
-//     score: correctAnswers,
-//     time: timer,
-//     initials: initials
-// };
-
 var scoresArray = [];
 //find number of objects in array
 var tempObj = JSON.parse(localStorage.getItem("highscores"));
@@ -23,12 +15,11 @@ function saveScore() {
     }
 }
 saveScore();
-// console.log(scoresArray);
 
-for (var i = 0; i < 6; i++) {
+for (var i = 0; i < tempObj.length; i++) {
     var listItem = document.createElement("li");
     if (i < scoresArray.length) {
-        listItem.textContent = [i + 1] + ". " + scoresArray[i].initials + " " + scoresArray[i].score + " " + scoresArray[i].time;
+        listItem.textContent = [i + 1] + ".    Initials: " + scoresArray[i].initials + ",   Score: " + scoresArray[i].score + ",   Time: " + scoresArray[i].time + " seconds";
         document.getElementById("highscoresInfo").appendChild(listItem);
     }
 }

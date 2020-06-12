@@ -1,11 +1,6 @@
-
-/* Change the font */
 body {
     background-image: url(Assets/Images/background-port.jpg);
-}
-
-.hsText {
-    text-align: center;
+    font-size: 1.5vw;
 }
 
 header .flex-container {
@@ -37,8 +32,7 @@ main .flex-container {
     padding: 5%;
     text-align: center;
     background-color: white;
-    max-height: 550px;
- 
+    max-height: 800px;
 }
 
 
@@ -71,12 +65,22 @@ p {
     display: block;
 }
 
+.hsText {
+    text-align: center;
+}
+
+ul .flex-container {
+    margin: 5px;
+}
+
 ul li {
     text-align: center;
     list-style-position: center;
-    font-size: 30px;
+    font-size: 2vw;
     list-style-type: none;
     color: black;
+    text-decoration: underline;
+ 
 }
 
 footer {
@@ -91,6 +95,3 @@ footer {
 }
 
 
-/* .answerBtns {
-    width: 75%;
-} */

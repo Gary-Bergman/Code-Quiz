@@ -31,33 +31,36 @@
                 <div class="row">
                     <p id="p1" class="show">Try to answer the following code-related questions within the time limit.
                         Keep in mind
-                        that incorrect answers will penalize your scoretime by ten seconds!</p>
+                        that incorrect answers will penalize your scoretime by 20 seconds!</p>
                 </div>
             </section>
 
-
+            <!-- start button -->
             <button id="startBtn" class="show">Start Quiz</button>
+
+            <!-- answer buttons -->
 
             <button id="btn1" class="hide">Text</button>
             <button id="btn2" class="hide">Text</button>
             <button id="btn3" class="hide">Text</button>
             <button id="btn4" class="hide">Text</button>
 
-
+            <!-- submit button -->
             <button id="submitBtn" class="hide">Submit</button>
 
+            <!-- text displayed on quiz after user hits startBtn -->
             <p id="p2" class="hide">If you select the wrong answer your time will decrease by 20 seconds!</p>
 
             <p id="p3" class="hide"></p>
 
+            <p id="p4" class="hide">Initials required.</p>
+
+            <!-- form that appear after user finishes quiz -->
             <form id="initialsForm" class="hide">
                 <label for="initials">Enter your initials:</label>
                 <input type="text" required="required" id="initials" name="initials">
                 <button id="initialsBtn">Submit</button>
             </form>
-            <!-- onclick="window.location.href='highscore.html'" -->
-
-
         </section>
 
     </main>

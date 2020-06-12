@@ -9,16 +9,9 @@ var btnInit = document.querySelector("#initialsBtn");
 var timer = 120;
 var questionIndex = 0;
 var correctAnswers = 0;
-// var incorrectAnswers = 5 - correctAnswers;
 var subCount = 0;
 
-
-
 // Update readme with vanilla javaScript functionality and how I made things work. Used bootstrap for syling. Created pages from scratch. etc.
-
-
-// Be consistent w/ querySelector OR getElementById
-// Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById Be consistent w/ querySelector OR getElementById
 
 // Event listener so that when the button is clicked, it will start the timer and the DOM will change some elements of the page to create the final page where the user can see the score, time, and enter initals to be stored.
 btnEl.addEventListener("click", function () {
@@ -39,7 +32,7 @@ btnEl.addEventListener("click", function () {
 
             document.getElementById("p3").setAttribute("class", "show");
 
-            document.getElementById("p3").textContent = "Your final time is " + timer;
+            document.getElementById("p3").textContent = "Your final time is " + timer + " seconds";
 
             document.getElementById("submitBtn").setAttribute("class", "hide");
 
@@ -95,7 +88,7 @@ function questionFunc() {
             questionText: "How do you create a function in JavaScript??",
             choice1: "Function",
             choice2: "function = myFunction()",
-            choice3: "Function = myFunction()",
+            choice3: "Function == myFunction()",
             choice4: "function : myFunction()",
             answer: "function = myFunction()",
             userAnswer: ""
@@ -142,7 +135,7 @@ function questionFunc() {
         console.log(correctAnswers)
 
 
-        // This will increase the questionIndex and switch the text in the buttons to reflect the next question and answer set. This also track the subCount which is used in code above to confirm the click and make sure the user is on the right page.
+        // This will increase the questionIndex and switch the text in the buttons to reflect the next question and answer set. This also tracks the subCount which is used in code above to confirm the click and make sure the user is on the right page.
         if (questionIndex < (question.length - 1)) {
             questionIndex++;
             document.getElementById("question").textContent = question[questionIndex].questionText;
@@ -159,26 +152,22 @@ function questionFunc() {
 
     btn1.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice1;
-
     });
     btn2.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice2;
     });
-
     btn3.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice3;
     });
-
     btn4.addEventListener("click", function () {
         question[questionIndex].userAnswer = question[questionIndex].choice4;
     });
 }
 
-
 // This will save the users initials at the end of the quiz along with the score and time to be implemented on the highscores page
 function saveHighscore() {
     var initialsElement = document.getElementById("initials")
-    var initials = initialsElement.value.trim();
+    var initials = initialsElement.value.toUpperCase().trim();
 
     if (initials !== "") {
         // Object of users score, time, and initials to be pushed to the array
@@ -197,29 +186,17 @@ function saveHighscore() {
 
         // This brings the user to the highscore page after the submit there initials
         window.location.href = "highscore.html";
+    } else {
+        document.getElementById("p4").setAttribute("class", "show");
     }
     // else {
     //     // create message to user saying "You must enter your initials to proceed" OR FIX THE REQUIRED BUTTON ON THE FORM!
-
-
-    // create function to loop through indices of highScoresArray
-    // var value = localStorage.getItem("highscores");
-    // var scores = JSON.parse(value);
-
-    // loop through array and display
 }
-// See highscore.js for the code that loops through the highScoresArray and puts each user's score on the page (highscore.html)
 
-
-// At the end of the quiz, this will run the saveHighscores function above
+// At the end of the quiz, this will run the saveHighscores function, above
 btnInit.addEventListener("click", function (e) {
     e.preventDefault()
     saveHighscore();
 })
 
-
-// btnInit.onclick = highscore.html;
-//need function to print highscores on page
-
-//set local after line 188
-// localStorage.setItem("highscores")
+// See highscore.js for the code that loops through the highScoresArray and puts each user's score on the page (highscore.html)
